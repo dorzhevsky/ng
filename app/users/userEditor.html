@@ -1,0 +1,72 @@
+<div class="params-area-wrapper" style="padding-bottom: 0;">
+    <form #form1 [formGroup]="form" class="form-horizontal" id="form-user" novalidate="novalidate">
+
+        <div class="form-group" style="line-height: 37px;">
+            <label class="col-sm-2 control-label">Логин:</label>
+
+            <div class="col-sm-6">
+                <input type="text" value="" style="display: none">
+                <input [messages]="messages" mfitooltip [enabled]="!login.valid" [class.error]="!login.valid && login.dirty" [formControl]="login"
+                    type="text" class="form-control inline valid" name="Login" id="form-user-login">
+            </div>
+            <a mfiConfirm *ngIf="user.Id > 0" (confirm)="deleteUser()" id="delete-user-btn" type="button" class="dashed-underline" data-original-title=""
+                title="" style="display: inline;">Удалить пользователя</a>
+        </div>
+
+
+        <div class="form-group">
+            <label class="col-sm-2 control-label">Пароль:</label>
+
+            <div class="col-sm-6">
+                <input type="password" value="" style="display: none">
+                <input mfitooltip [enabled]="!password.valid" [class.error]="!password.valid" [formControl]="password" type="password" class="form-control valid"
+                    name="Pass" id="form-user-pass" data-is-pass-changed="false">
+            </div>
+        </div>
+        <br>
+
+        <div class="form-group">
+            <label class="col-sm-2 control-label">Имя:</label>
+
+            <div class="col-sm-6">
+                <input mfitooltip [enabled]="!firstName.valid" [class.error]="!firstName.valid" [formControl]="firstName" type="text" class="form-control success-control valid"
+                    name="FirstName" id="form-user-first-name">
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <label class="col-sm-2 control-label">Фамилия:</label>
+
+            <div class="col-sm-6">
+                <input mfitooltip [enabled]="!lastName.valid" [class.error]="!lastName.valid" [formControl]="lastName" type="text" class="form-control error-control valid"
+                    name="LastName" id="form-user-last-name">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-sm-2 control-label">Роль:</label>
+
+            <div class="col-sm-6">
+                <mfiddlist [defaultText]="'Select a role'" [items]="roles" [formControl]="role">
+                </mfiddlist>
+            </div>
+        </div>
+
+        <template #customTemplate let-permission="Value">
+            <span>{{permission.Name}}</span>
+        </template>
+
+        <div id="users-roles-tree" class="tree" style="height:300px;">
+            <br/>
+            <tree [tree]="permissionsTree" [itemTemplate]="customTemplate"></tree>
+        </div>
+
+    </form>
+</div>
+<div class="params-area-wrapper">
+    <button [disabled]="!form.valid" (click)="saveUser()" class="btn btn-success btn-cons" id="users-save-btn">Сохранить пользователя</button>
+    <div style="float: right;">
+        <button id="users-params-cancel" type="button" class="btn btn-sm">Отмена</button>
+    </div>
+</div>

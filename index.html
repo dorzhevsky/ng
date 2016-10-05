@@ -1,0 +1,252 @@
+<html class="">
+
+<head>
+  <title>Пользователи</title>
+  <meta http-equiv="content-type" content="text/html;charset=UTF-8">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta content="" name="description">
+  <meta content="" name="author">
+
+
+  <link href="/Content/webarch/plugins/boostrapv3/css/bootstrap.min.css" rel="stylesheet">
+
+  <style>
+    .tooltip.tooltip-top .tooltip-arrow {
+    bottom: -5px;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px 5px 0;
+    border-top-color: #000;
+    }
+  </style>
+
+  <link href="/Content/webarch/plugins/font-awesome/css/font-awesome.css" rel="stylesheet" type="text/css">
+
+  <link href="/Content/webarch/css/style.css" rel="stylesheet">
+  <link href="/Content/webarch/css/responsive.css" rel="stylesheet">
+  <link href="/Content/webarch/css/custom-icon-set.css" rel="stylesheet" type="text/css">
+
+  <link href="/Content/fonts/OpenSans/OpenSans.css" rel="stylesheet" type="text/css">
+
+  <link href="/Content/mfi.main.css" rel="stylesheet">
+  <link href="/Content/mfi.expandableTree.css" rel="stylesheet">
+  <link href="/Content/mfi.page.css" rel="stylesheet">
+  <link href="/Content/mfi.roles.css" rel="stylesheet">
+
+
+  <script src="node_modules/core-js/client/shim.min.js"></script>
+  <script src="node_modules/zone.js/dist/zone.js"></script>
+  <script src="node_modules/reflect-metadata/Reflect.js"></script>
+  <script src="node_modules/systemjs/dist/system.src.js"></script>
+  <!-- 2. Configure SystemJS -->
+  <script src="resources/systemjs.config.js"></script>
+  <script>
+    System.import('app').catch(function(err){ console.error(err); });
+  </script>
+
+</head>
+
+<body class="navbar-fixed breakpoint-1024">
+
+
+
+  <div class="header navbar navbar-inverse" id="navbar">
+
+    <!-- BEGIN TOP NAVIGATION BAR -->
+    <div class="navbar-inner" style="background-color: #0090d9 !important;">
+      <!-- BEGIN NAVIGATION HEADER -->
+      <div class="header-seperation">
+        <!-- BEGIN MOBILE HEADER -->
+        <ul class="nav pull-left notifcation-center" id="main-menu-toggle-wrapper" style="display: none">
+          <li class="dropdown">
+            <a id="main-menu-toggle" href="#main-menu" class="">
+              <div class="iconset top-menu-toggle-white"></div>
+            </a>
+          </li>
+        </ul>
+        <!-- END MOBILE HEADER -->
+        <!-- BEGIN LOGO -->
+
+        <a href="#/Dashboard">
+          <img src="/Content/Img/logo_garda.png" class="logo" alt="" data-src="/Content/Img/logo_garda.png" data-src-retina="/Content/Img/logo_garda.png"
+            width="200" height="28" style="margin: 19px 23px;">
+        </a>
+
+        <!-- END LOGO -->
+        <!-- BEGIN LOGO NAV BUTTONS -->
+        <ul class="nav pull-right notifcation-center">
+          <!-- BEGIN MOBILE CHAT TOGGLER -->
+          <li class="dropdown" id="portrait-chat-toggler" style="display: none">
+            <a href="#sidr" class="chat-menu-toggle">
+              <div class="iconset top-chat-white"></div>
+            </a>
+          </li>
+          <!-- END MOBILE CHAT TOGGLER -->
+        </ul>
+        <!-- END LOGO NAV BUTTONS -->
+      </div>
+      <!-- END NAVIGATION HEADER -->
+      <!-- BEGIN CONTENT HEADER -->
+      <div class="header-quick-nav">
+        <!-- BEGIN HEADER LEFT SIDE SECTION -->
+        <div class="pull-left">
+          <!-- BEGIN SLIM NAVIGATION TOGGLE -->
+          <ul class="nav quick-section">
+            <li class="quicklinks">
+              <a href="javascript: void(0);" class="" id="layout-condensed-toggle">
+                <div class="iconset top-menu-toggle-white"></div>
+              </a>
+            </li>
+          </ul>
+          <!-- END SLIM NAVIGATION TOGGLE -->
+
+          <button type="button" class="nav-button"></button>
+
+        </div>
+        <!-- END HEADER LEFT SIDE SECTION -->
+        <div class="nav-section-title">
+          <h3 class="nav-title">Пользователи</h3>
+        </div>
+        <!-- BEGIN HEADER RIGHT SIDE SECTION -->
+        <div class="pull-right">
+          <!-- BEGIN HEADER NAV BUTTONS -->
+          <ul class="nav quick-section profile">
+            <!-- BEGIN SETTINGS -->
+
+            <li class="quicklinks">
+              <a data-toggle="dropdown" class="dropdown-toggle pull-right" href="#" id="user-options">
+                <!-- BEGIN PROFILE PICTURE -->
+                <div class="profile-pic" style="margin-left: 10px;">
+                  <i class="fa fa-user" style="color: #fff !important; font-size: 23px !important"></i>
+                </div>
+                <!-- END PROFILE PICTURE -->
+                <div class="user-details">
+                  <div class="username">
+                    <span class="bold">Администратор комплекса</span>
+                  </div>
+                </div>
+                <i class="fa fa-angle-down" id="header-angle-down"></i>
+              </a>
+              <ul class="dropdown-menu pull-right" role="menu" aria-labelledby="user-options">
+                <li class="dropdown-submenu pull-left" style="width: 100%;">
+                  <a href="javascript:void(0)"><i class="fa fa-question" style="margin-left: 2px; margin-right: 3px;"></i>&nbsp;&nbsp;Справка</a>
+                  <ul class="dropdown-menu">
+                    <li>
+                      <a href="/Manuals/Гарда Предприятие 3. Руководство пользователя.pdf" target="_blank">Руководство пользователя
+                                            </a>
+                    </li>
+                    <li>
+                      <a href="/Manuals/Гарда Предприятие 3. Руководство администратора.pdf" target="_blank">Руководство администратора
+                                            </a>
+                    </li>
+                  </ul>
+                </li>
+                <li>
+                  <a href="/#/About"><i class="fa fa-info-circle"></i>&nbsp;&nbsp;О программе</a>
+                </li>
+                <li class="divider"></li>
+                <li>
+                  <a href="/Account/LogOut"><i class="fa fa-power-off"></i>&nbsp;&nbsp;Выход</a>
+                </li>
+              </ul>
+            </li>
+
+            <!-- END SETTINGS -->
+          </ul>
+          <!-- END HEADER NAV BUTTONS -->
+        </div>
+        <!-- END HEADER RIGHT SIDE SECTION -->
+      </div>
+      <!-- END CONTENT HEADER -->
+    </div>
+    <!-- END TOP NAVIGATION BAR -->
+
+
+  </div>
+
+  <div class="page-container row-fluid">
+    <div class="page-sidebar" id="main-menu">
+      <div class="slimScrollDiv" style="position: relative; overflow: hidden; width: auto; height: 837px;">
+        <div class="page-sidebar-wrapper" id="main-menu-wrapper" style="overflow: hidden; width: auto; height: 837px;">
+
+          <ul class="nav nav-list">
+
+            <li class="" data-area="Dashboard">
+              <a href="/#/Dashboard">
+                <i class="icon-custom-home"></i>
+                <span class="title">Главное</span>
+              </a>
+            </li>
+
+            <li class="" data-area="Policy">
+              <a href="/#/Policy">
+                <i class="fa fa-shield"></i>
+                <span class="title">Политики</span>
+                <span id="all-policies-unread-incidents" class="badge badge-info badge-policy" title="Новых нарушений" style="margin-top: -3px;">5761</span>
+              </a>
+            </li>
+
+            <li class="" data-area="Staff">
+              <a href="/#/Staff">
+                <i class="fa fa-users"></i>
+                <span class="title">Сотрудники</span>
+              </a>
+            </li>
+
+            <li class="" data-area="Search">
+              <a href="/#/Search">
+                <i class="fa fa-search"></i>
+                <span class="title">Поиск</span>
+              </a>
+            </li>
+
+
+            <li class="" data-area="Reports">
+              <a href="/#/Reports">
+                <i class="fa fa-bar-chart-o"></i>
+                <span class="title">Отчеты</span>
+              </a>
+            </li>
+
+            <li class="open" id="sidebar-settings">
+              <a href="javascript:;">
+                <i class="fa fa-cog"></i>
+                <span class="title">Настройки</span>
+                <span class="arrow open"></span>
+              </a>
+              <ul class="sub-menu" style="display: block;">
+                <li data-area="Workplaces"><a href="/#/Workplaces">Агенты рабочих мест</a></li>
+                <li data-area="Ldap"><a href="/#/Ldap">Синхронизация с LDAP</a></li>
+                <li data-area="SystemLogs"><a href="/#/Settings/SystemLogs">Журнал</a></li>
+                <li data-area="Exclusions"><a href="/#/Exclusions">Исключения</a></li>
+                <li data-area="Users" class="active"><a href="/#/Users">Пользователи</a></li>
+                <li data-area="EmailNotifications"><a href="/#/EmailNotifications">Email оповещения</a></li>
+              </ul>
+            </li>
+
+          </ul>
+
+        </div>
+        <div class="slimScrollBar" style="width: 4px; position: absolute; top: 0px; opacity: 0.4; display: none; border-radius: 7px; z-index: 99; right: 1px; height: 837px; background: rgb(161, 178, 189);"></div>
+        <div class="slimScrollRail" style="width: 4px; height: 100%; position: absolute; top: 0px; display: none; border-radius: 7px; opacity: 0.2; z-index: 90; right: 1px; background: rgb(51, 51, 51);"></div>
+      </div>
+    </div>
+
+    <a href="#" class="scrollup" style="display: none;">Scroll</a>
+
+    <div class="page-content" data-height="1835" style="position: relative;">
+      <div class="content" id="content">
+
+        <app></app>
+
+      </div>
+    </div>
+  </div>
+
+  <div id="footerLayout">
+  </div>
+
+</body>
+
+</html>

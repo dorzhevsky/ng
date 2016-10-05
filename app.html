@@ -1,0 +1,321 @@
+<div id="Users-wrapper-elem">
+
+
+    <div class="page-title visible-xs">
+        <h2>Пользователи</h2>
+    </div>
+    <div id="users">
+        <div class="row">
+            <div class="col-sm-4" id="users-list-wrapper" style="margin-top: 0px;">
+
+                <div class="grid simple">
+
+                    <div class="grid-body no-border">
+
+                        <usersList #usersList (userSelected)="onUserSelected($event)"></usersList>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="col-sm-8">
+
+                <div class="grid simple" style="" id="widget-create-edit-user">
+
+                    <userHeader [selectedUser]="selectedUser" #userHeader></userHeader>
+
+                    <hr class="no-margin">
+                    <div class="grid-body no-padding no-border">
+
+                        <userEditor (userDeleted)="deleteUser($event)" (userSaved)="userSaved($event)" [selectedUser]="selectedUser" #userEditor></userEditor>
+
+                        <!--<div id="users-roles-area" style="display: block; overflow: visible;">
+
+                            <div id="users-roles-new-caption" style="display: none;">
+                                <h4><span class="semi-bold">Новая роль</span></h4>
+                                <div style="margin-bottom: 25px;">Чтобы выбранный пользователь имел доступ только к определенным данным, создайте новую роль</div>
+                            </div>
+
+                            <div id="users-roles-edit-caption">
+                                <h4><span class="semi-bold">Редактирование роли</span></h4>
+                            </div>
+
+                            <div class="row" style="margin-bottom: 20px;">
+                                <div class="col-sm-2">
+                                    <span style="line-height: 37px;">Название:</span>
+                                </div>
+                                <div class="col-sm-10">
+                                    <form id="users-role-form" novalidate="novalidate">
+                                        <input id="users-role-name" type="text" name="userRoleName">
+                                    </form>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-sm-2">
+                                    <span style="">Доступ:</span>
+                                </div>
+                                <div class="col-sm-10">
+                                    <div id="users-roles-tree" class="tree">
+                                        <ul>
+                                            <li data-menu-item="true" class="parent">
+                                                <a href="javascript:void(0)">
+                                                    <div class="checkbox" style="display: inline-block;">
+                                                        <input type="checkbox"><label>&nbsp;</label></div>
+                                                </a><span><i class="fa fa-caret-right"></i><span class="roles-tree-role-name">Главное</span></span>
+                                                <ul>
+                                                    <li data-menu-item="true" data-permissions="1">
+                                                        <a href="javascript:void(0)">
+                                                            <div class="checkbox" style="display: inline-block;">
+                                                                <input type="checkbox"><label>&nbsp;</label></div>
+                                                        </a><span><span class="roles-tree-role-name">Просмотр раздела</span></span>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                            <li data-menu-item="true" class="parent active">
+                                                <a href="javascript:void(0)">
+                                                    <div class="checkbox" style="display: inline-block;">
+                                                        <input type="checkbox"><label>&nbsp;</label></div>
+                                                </a><span><i class="fa fa-caret-right"></i><span class="roles-tree-role-name">Политики</span></span>
+                                                <ul>
+                                                    <li data-menu-item="true" data-permissions="4" class="active">
+                                                        <a href="javascript:void(0)">
+                                                            <div class="checkbox" style="display: inline-block;">
+                                                                <input type="checkbox"><label>&nbsp;</label></div>
+                                                        </a><span><span class="roles-tree-role-name">Просмотр раздела</span></span>
+                                                    </li>
+                                                    <li data-menu-item="true" data-permissions="256" class="active">
+                                                        <a href="javascript:void(0)">
+                                                            <div class="checkbox" style="display: inline-block;">
+                                                                <input type="checkbox"><label>&nbsp;</label></div>
+                                                        </a><span><span class="roles-tree-role-name">Управление политиками</span></span>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                            <li data-menu-item="true" class="parent">
+                                                <a href="javascript:void(0)">
+                                                    <div class="checkbox" style="display: inline-block;">
+                                                        <input type="checkbox"><label>&nbsp;</label></div>
+                                                </a><span><i class="fa fa-caret-right"></i><span class="roles-tree-role-name">Сотрудники</span></span>
+                                                <ul>
+                                                    <li data-menu-item="true" data-permissions="512">
+                                                        <a href="javascript:void(0)">
+                                                            <div class="checkbox" style="display: inline-block;">
+                                                                <input type="checkbox"><label>&nbsp;</label></div>
+                                                        </a><span><span class="roles-tree-role-name">Карточка сотрудника</span></span>
+                                                    </li>
+                                                    <li data-menu-item="true" data-permissions="1024" class="active">
+                                                        <a href="javascript:void(0)">
+                                                            <div class="checkbox" style="display: inline-block;">
+                                                                <input type="checkbox"><label>&nbsp;</label></div>
+                                                        </a><span><span class="roles-tree-role-name">Статистика сотрудника</span></span>
+                                                    </li>
+                                                    <li data-menu-item="true" data-permissions="2048">
+                                                        <a href="javascript:void(0)">
+                                                            <div class="checkbox" style="display: inline-block;">
+                                                                <input type="checkbox"><label>&nbsp;</label></div>
+                                                        </a><span><span class="roles-tree-role-name">Связи сотрудника</span></span>
+                                                    </li>
+                                                    <li data-menu-item="true" data-permissions="8192" class="active">
+                                                        <a href="javascript:void(0)">
+                                                            <div class="checkbox" style="display: inline-block;">
+                                                                <input type="checkbox"><label>&nbsp;</label></div>
+                                                        </a><span><span class="roles-tree-role-name">Сайты сотрудника</span></span>
+                                                    </li>
+                                                    <li data-menu-item="true" data-permissions="4096" class="active">
+                                                        <a href="javascript:void(0)">
+                                                            <div class="checkbox" style="display: inline-block;">
+                                                                <input type="checkbox"><label>&nbsp;</label></div>
+                                                        </a><span><span class="roles-tree-role-name">Приложения сотрудника</span></span>
+                                                    </li>
+                                                    <li data-menu-item="true" data-permissions="16384">
+                                                        <a href="javascript:void(0)">
+                                                            <div class="checkbox" style="display: inline-block;">
+                                                                <input type="checkbox"><label>&nbsp;</label></div>
+                                                        </a><span><span class="roles-tree-role-name">Скриншоты сотрудника</span></span>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                            <li data-menu-item="true" class="parent">
+                                                <a href="javascript:void(0)">
+                                                    <div class="checkbox" style="display: inline-block;">
+                                                        <input type="checkbox"><label>&nbsp;</label></div>
+                                                </a><span><i class="fa fa-caret-right"></i><span class="roles-tree-role-name">Поиск</span></span>
+                                                <ul>
+                                                    <li data-menu-item="true" data-permissions="16">
+                                                        <a href="javascript:void(0)">
+                                                            <div class="checkbox" style="display: inline-block;">
+                                                                <input type="checkbox"><label>&nbsp;</label></div>
+                                                        </a><span><span class="roles-tree-role-name">Просмотр раздела</span></span>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                            <li data-menu-item="true" class="parent">
+                                                <a href="javascript:void(0)">
+                                                    <div class="checkbox" style="display: inline-block;">
+                                                        <input type="checkbox"><label>&nbsp;</label></div>
+                                                </a><span><i class="fa fa-caret-right"></i><span class="roles-tree-role-name">Отчеты</span></span>
+                                                <ul>
+                                                    <li data-menu-item="true" data-permissions="32768">
+                                                        <a href="javascript:void(0)">
+                                                            <div class="checkbox" style="display: inline-block;">
+                                                                <input type="checkbox"><label>&nbsp;</label></div>
+                                                        </a><span><span class="roles-tree-role-name">Топ сайтов</span></span>
+                                                    </li>
+                                                    <li data-menu-item="true" data-permissions="65536">
+                                                        <a href="javascript:void(0)">
+                                                            <div class="checkbox" style="display: inline-block;">
+                                                                <input type="checkbox"><label>&nbsp;</label></div>
+                                                        </a><span><span class="roles-tree-role-name">Топ больших файлов</span></span>
+                                                    </li>
+                                                    <li data-menu-item="true" data-permissions="131072">
+                                                        <a href="javascript:void(0)">
+                                                            <div class="checkbox" style="display: inline-block;">
+                                                                <input type="checkbox"><label>&nbsp;</label></div>
+                                                        </a><span><span class="roles-tree-role-name">Топ сотрудников по почте</span></span>
+                                                    </li>
+                                                    <li data-menu-item="true" data-permissions="262144">
+                                                        <a href="javascript:void(0)">
+                                                            <div class="checkbox" style="display: inline-block;">
+                                                                <input type="checkbox"><label>&nbsp;</label></div>
+                                                        </a><span><span class="roles-tree-role-name">Топ сотрудников по сайтам</span></span>
+                                                    </li>
+                                                    <li data-menu-item="true" data-permissions="524288">
+                                                        <a href="javascript:void(0)">
+                                                            <div class="checkbox" style="display: inline-block;">
+                                                                <input type="checkbox"><label>&nbsp;</label></div>
+                                                        </a><span><span class="roles-tree-role-name">Топ сотрудников по мессенджерам</span></span>
+                                                    </li>
+                                                    <li data-menu-item="true" data-permissions="1048576">
+                                                        <a href="javascript:void(0)">
+                                                            <div class="checkbox" style="display: inline-block;">
+                                                                <input type="checkbox"><label>&nbsp;</label></div>
+                                                        </a><span><span class="roles-tree-role-name">Топ сотрудников по соцсетям</span></span>
+                                                    </li>
+                                                    <li data-menu-item="true" data-permissions="2097152">
+                                                        <a href="javascript:void(0)">
+                                                            <div class="checkbox" style="display: inline-block;">
+                                                                <input type="checkbox"><label>&nbsp;</label></div>
+                                                        </a><span><span class="roles-tree-role-name">Топ сотрудников по файлам</span></span>
+                                                    </li>
+                                                    <li data-menu-item="true" data-permissions="4194304">
+                                                        <a href="javascript:void(0)">
+                                                            <div class="checkbox" style="display: inline-block;">
+                                                                <input type="checkbox"><label>&nbsp;</label></div>
+                                                        </a><span><span class="roles-tree-role-name">Топ сотрудников по звонкам</span></span>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                            <li data-menu-item="true" class="parent">
+                                                <a href="javascript:void(0)">
+                                                    <div class="checkbox" style="display: inline-block;">
+                                                        <input type="checkbox"><label>&nbsp;</label></div>
+                                                </a><span><i class="fa fa-caret-right"></i><span class="roles-tree-role-name">Настройки</span></span>
+                                                <ul>
+                                                    <li data-menu-item="true" class="parent">
+                                                        <a href="javascript:void(0)">
+                                                            <div class="checkbox" style="display: inline-block;">
+                                                                <input type="checkbox"><label>&nbsp;</label></div>
+                                                        </a><span><i class="fa fa-caret-right"></i><span class="roles-tree-role-name">Агенты рабочих мест</span></span>
+                                                        <ul>
+                                                            <li data-menu-item="true" data-permissions="128">
+                                                                <a href="javascript:void(0)">
+                                                                    <div class="checkbox" style="display: inline-block;">
+                                                                        <input type="checkbox"><label>&nbsp;</label></div>
+                                                                </a><span><span class="roles-tree-role-name">Просмотр раздела</span></span>
+                                                            </li>
+                                                        </ul>
+                                                    </li>
+                                                    <li data-menu-item="true" class="parent">
+                                                        <a href="javascript:void(0)">
+                                                            <div class="checkbox" style="display: inline-block;">
+                                                                <input type="checkbox"><label>&nbsp;</label></div>
+                                                        </a><span><i class="fa fa-caret-right"></i><span class="roles-tree-role-name">Пользователи</span></span>
+                                                        <ul>
+                                                            <li data-menu-item="true" data-permissions="64">
+                                                                <a href="javascript:void(0)">
+                                                                    <div class="checkbox" style="display: inline-block;">
+                                                                        <input type="checkbox"><label>&nbsp;</label></div>
+                                                                </a><span><span class="roles-tree-role-name">Просмотр раздела</span></span>
+                                                            </li>
+                                                        </ul>
+                                                    </li>
+                                                    <li data-menu-item="true" class="parent">
+                                                        <a href="javascript:void(0)">
+                                                            <div class="checkbox" style="display: inline-block;">
+                                                                <input type="checkbox"><label>&nbsp;</label></div>
+                                                        </a><span><i class="fa fa-caret-right"></i><span class="roles-tree-role-name">Синхронизация c LDAP</span></span>
+                                                        <ul>
+                                                            <li data-menu-item="true" data-permissions="2">
+                                                                <a href="javascript:void(0)">
+                                                                    <div class="checkbox" style="display: inline-block;">
+                                                                        <input type="checkbox"><label>&nbsp;</label></div>
+                                                                </a><span><span class="roles-tree-role-name">Просмотр раздела</span></span>
+                                                            </li>
+                                                        </ul>
+                                                    </li>
+                                                    <li data-menu-item="true" class="parent">
+                                                        <a href="javascript:void(0)">
+                                                            <div class="checkbox" style="display: inline-block;">
+                                                                <input type="checkbox"><label>&nbsp;</label></div>
+                                                        </a><span><i class="fa fa-caret-right"></i><span class="roles-tree-role-name">Исключения</span></span>
+                                                        <ul>
+                                                            <li data-menu-item="true" data-permissions="8388608">
+                                                                <a href="javascript:void(0)">
+                                                                    <div class="checkbox" style="display: inline-block;">
+                                                                        <input type="checkbox"><label>&nbsp;</label></div>
+                                                                </a><span><span class="roles-tree-role-name">Просмотр раздела</span></span>
+                                                            </li>
+                                                        </ul>
+                                                    </li>
+                                                    <li data-menu-item="true" class="parent">
+                                                        <a href="javascript:void(0)">
+                                                            <div class="checkbox" style="display: inline-block;">
+                                                                <input type="checkbox"><label>&nbsp;</label></div>
+                                                        </a><span><i class="fa fa-caret-right"></i><span class="roles-tree-role-name">Журнал</span></span>
+                                                        <ul>
+                                                            <li data-menu-item="true" data-permissions="16777216">
+                                                                <a href="javascript:void(0)">
+                                                                    <div class="checkbox" style="display: inline-block;">
+                                                                        <input type="checkbox"><label>&nbsp;</label></div>
+                                                                </a><span><span class="roles-tree-role-name">Просмотр раздела</span></span>
+                                                            </li>
+                                                        </ul>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div class="alert" id="users-role-warning" style="display: block;">
+                                        <i class="fa fa-warning"></i> Изменения будут применены для всех пользователей с
+                                        данной ролью
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div style="float: left;">
+                                        <button id="users-save-role" type="button" class="btn btn-default btn-cons">Сохранить роль</button>
+                                    </div>
+                                    <div style="float: right;">
+                                        <button id="users-cancel-role" type="button" class="btn btn-sm">Отмена</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>-->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
