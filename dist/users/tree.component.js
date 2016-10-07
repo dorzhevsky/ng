@@ -9,6 +9,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require("@angular/core");
+var _ = require("lodash");
 var TreeComponent = (function () {
     function TreeComponent() {
         this.childrenVisible = false;
@@ -20,6 +21,17 @@ var TreeComponent = (function () {
     TreeComponent.prototype.check = function (node, checked) {
         node.Check(checked);
     };
+    Object.defineProperty(TreeComponent.prototype, "selectedItems", {
+        get: function () {
+            var selectedItems = [];
+            _.each(this.tree, function (n) {
+                selectedItems = _.union(selectedItems, n.getSelectedItems());
+            });
+            return selectedItems;
+        },
+        enumerable: true,
+        configurable: true
+    });
     __decorate([
         core_1.Input(), 
         __metadata('design:type', Array)

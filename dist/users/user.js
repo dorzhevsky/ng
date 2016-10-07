@@ -15,9 +15,6 @@ var User = (function () {
         enumerable: true,
         configurable: true
     });
-    User.Empty = function () {
-        return new User(0, "", "", "", "", new Role(1, "Administrator", 1));
-    };
     return User;
 }());
 exports.User = User;

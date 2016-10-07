@@ -8,6 +8,7 @@ import
     TemplateRef 
 } from "@angular/core";
 import { TreeNode } from "./treeNode.class";
+import * as _ from "lodash";
 
 @Component({
    selector:"tree",
@@ -51,8 +52,18 @@ export class TreeComponent
         this.childrenVisible = !this.childrenVisible
     }
 
-    public check(node: TreeNode<any>, checked: boolean)
+    private check(node: TreeNode<any>, checked: boolean)
     {
         node.Check(checked);
+    }
+
+    public get selectedItems()
+    {
+        let selectedItems: Array<any> = [];
+        _.each(this.tree, (n)=>
+        {
+            selectedItems = _.union(selectedItems, n.getSelectedItems());
+        });
+        return selectedItems;
     }
 }

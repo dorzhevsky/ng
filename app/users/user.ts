@@ -13,10 +13,6 @@ export class User
     public get Name(): string{
         return this.FirstName + " " + this.LastName; 
     }
-
-    public static Empty(): User{
-        return new User(0,"","", "", "", new Role(1, "Administrator", 1));
-    }
 }
 
 export class Role

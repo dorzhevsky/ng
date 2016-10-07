@@ -9,26 +9,23 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require("@angular/core");
-var user_1 = require("./user");
-var generator_1 = require("../shared/generator");
+var users_service_1 = require("./users.service");
 var _ = require('lodash');
 var UsersListComponent = (function () {
-    function UsersListComponent() {
+    function UsersListComponent(usersService) {
+        this.usersService = usersService;
         this.userSelected = new core_1.EventEmitter();
-        this.users = [
-            new user_1.User(generator_1.Generator.Next(), "dorzhevsky", "qwerty", "Dmitry", "Orzhevsky", new user_1.Role(1, "Administrator", 7)),
-            new user_1.User(generator_1.Generator.Next(), "ashkarin", "qwerty", "Anton", "Shkarin", new user_1.Role(1, "HR", 2)),
-            new user_1.User(generator_1.Generator.Next(), "esokolova", "qwerty", "Elena", "Sokolova", new user_1.Role(1, "Officer", 3)),
-            new user_1.User(generator_1.Generator.Next(), "dbashkalin", "qwerty", "Dmitry", "Bashkalin", new user_1.Role(1, "Administrator", 1)),
-            new user_1.User(generator_1.Generator.Next(), "adegtev", "qwerty", "Alex", "Degtev", new user_1.Role(1, "HR", 2)),
-        ];
     }
+    UsersListComponent.prototype.ngOnInit = function () {
+        this.users = this.usersService.getUsers();
+        this.createUser();
+    };
     UsersListComponent.prototype.selectUser = function (user) {
         this.selectedUser = user;
         this.userSelected.emit(user);
     };
     UsersListComponent.prototype.createUser = function () {
-        var emptyUser = user_1.User.Empty();
+        var emptyUser = this.usersService.getEmptyUser();
         this.selectedUser = emptyUser;
         this.userSelected.emit(emptyUser);
     };
@@ -44,9 +41,6 @@ var UsersListComponent = (function () {
             this.createUser();
         }
     };
-    UsersListComponent.prototype.ngOnInit = function () {
-        this.createUser();
-    };
     __decorate([
         core_1.Output(), 
         __metadata('design:type', core_1.EventEmitter)
@@ -56,7 +50,7 @@ var UsersListComponent = (function () {
             selector: "usersList",
             templateUrl: "./app/users/usersList.html"
         }), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [users_service_1.UsersService])
     ], UsersListComponent);
     return UsersListComponent;
 }());

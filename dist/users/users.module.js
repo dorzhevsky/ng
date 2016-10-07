@@ -13,7 +13,9 @@ var platform_browser_1 = require('@angular/platform-browser');
 var usersList_1 = require('./usersList');
 var userHeader_1 = require("./userHeader");
 var userEditor_1 = require("./userEditor");
+var role_editor_component_1 = require("./role.editor.component");
 var tree_component_1 = require("./tree.component");
+var users_service_1 = require("./users.service");
 var forms_1 = require('@angular/forms');
 var shared_module_1 = require('../shared/shared.module');
 var UsersModule = (function () {
@@ -26,14 +28,17 @@ var UsersModule = (function () {
                 usersList_1.UsersListComponent,
                 userHeader_1.UserHeaderComponent,
                 userEditor_1.UserEditorComponent,
+                role_editor_component_1.RoleEditorComponent,
                 tree_component_1.TreeComponent
             ],
             exports: [
                 usersList_1.UsersListComponent,
                 userHeader_1.UserHeaderComponent,
                 userEditor_1.UserEditorComponent,
+                role_editor_component_1.RoleEditorComponent,
                 tree_component_1.TreeComponent
-            ]
+            ],
+            providers: [users_service_1.UsersService]
         }), 
         __metadata('design:paramtypes', [])
     ], UsersModule);

@@ -63,8 +63,25 @@ var TreeNode = (function () {
     };
     TreeNode.prototype.indeterminate = function () {
         this.Indeterminate = true;
+        this.Checked = false;
         if (this.parent) {
             this.parent.indeterminate();
+        }
+    };
+    TreeNode.prototype.getSelectedItems = function () {
+        var selectedItems = [];
+        this.getSelectedItemsInternal(selectedItems);
+        return selectedItems;
+    };
+    TreeNode.prototype.getSelectedItemsInternal = function (selectedItems) {
+        // console.log("getSelectedItemsInternal");
+        // console.log(this.Value);
+        // console.log(this.Checked);
+        if (this.Checked) {
+            selectedItems.push(this.value);
+        }
+        if (this.Children && this.Children.length > 0) {
+            _.each(this.Children, function (c) { return c.getSelectedItemsInternal(selectedItems); });
         }
     };
     return TreeNode;

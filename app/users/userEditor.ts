@@ -12,7 +12,8 @@ import {
     HostListener,
     ReflectiveInjector,
     OnInit,
-    SimpleChanges
+    SimpleChanges,
+    ViewChild
 } from "@angular/core";
 import {
     FormBuilder,
@@ -29,6 +30,8 @@ import { User, Role } from "./user";
 import { Generator } from "../shared/generator";
 import { IPermission, Permission, PermissionGroup } from "./permission";
 import { TreeNode } from "./treeNode.class";
+import { TreeComponent } from "./tree.component";
+import { UsersService } from "./users.service";
 import 'jquery';
 import * as _ from "lodash";
 //declare var $:JQueryStatic;
@@ -37,7 +40,7 @@ import * as _ from "lodash";
    selector:"userEditor",
    templateUrl: "./app/users/userEditor.html"
 })
-export class UserEditorComponent
+export class UserEditorComponent implements OnInit
 {
     public permissionsTree: Array<TreeNode<Permission>>;
     public user: User;
@@ -47,6 +50,9 @@ export class UserEditorComponent
 
     @Output() 
     public userDeleted: EventEmitter<User> = new EventEmitter<User>();
+
+    @ViewChild(TreeComponent)
+    public rolesTree:TreeComponent;
 
     public roles: Array<Role>;
 
@@ -60,7 +66,9 @@ export class UserEditorComponent
     public lastName = new FormControl("", Validators.required);
     public role = new FormControl("", Validators.required);
 
-    constructor(private formBuilder: FormBuilder)
+    private selectedRole: Role;
+
+    constructor(private formBuilder: FormBuilder, private usersService: UsersService)
     {
         this.form = this.formBuilder.group({
             "login": this.login,
@@ -75,86 +83,32 @@ export class UserEditorComponent
             required:'Необходимо задать значение'
         };
 
-        this.roles = 
-        [
-            new Role(1, "Administrator",1),
-            new Role(2, "HR",2),
-            new Role(3, "Offices",4)
-        ];
+        this.roles = this.usersService.getRoles();
+    }
 
-        this.permissionsTree = 
-        [
-            new TreeNode(new Permission("Programming", 0),
-            [
-                new TreeNode(new Permission("C#", 1), null),
-                new TreeNode(new Permission("Python", 2), null),
-                new TreeNode(new Permission("JavaScript", 4), null)
-            ])
-        ]
-
+    public ngOnInit()
+    {
         var that = this;
         this.role.valueChanges.subscribe(function()
         {
-            console.log(that.role.value);
-            that.resetPermissionsTree(that.permissionsTree);
-            that.updatePermissionsTree(that.permissionsTree);            
-        });
+            that.selectedRole = <Role>that.role.value;
+        })
     }
 
     @Input() public set selectedUser(user: User)
     {
         this.user = user;
+        this.selectedRole = this.user.Role;
 
         this.login.reset();
         this.login.setValue(user.Login);
 
-        this.password.setValue(user.Password);
+        //TODO: Reset all form controls
+        this.password.setValue(user.Password);        
         this.firstName.setValue(user.FirstName);
         this.lastName.setValue(user.LastName);
         this.role.setValue(user.Role);
-
-        // this.resetPermissionsTree(this.permissionsTree);
-        // this.updatePermissionsTree(this.permissionsTree);
     } 
-
-    private updatePermissionsTree(permissions: Array<TreeNode<Permission>>)
-    {
-        _.each(permissions, e =>
-        {
-            let permission = e.Value;
-            // console.log("Permission mask");
-            // console.log(this.role.value.PermissionsMask);
-            if (permission.Value & this.role.value.PermissionsMask)
-            {
-                e.Check(true);
-            }
-            if (e.Children && e.Children.length > 0)
-            {
-                this.updatePermissionsTree(e.Children);
-            }
-        });
-    }
-
-    private resetPermissionsTree(permissions: Array<TreeNode<Permission>>)
-    {
-        _.each(permissions, e =>
-        {
-            e.Checked = false;
-            e.Indeterminate = false;
-            if (e.Children && e.Children.length > 0)
-            {
-                this.resetPermissionsTree(e.Children);
-            }
-        });
-    }
-
-
-    public onChange(role: Role)
-    {
-        // this.user.Role = role;
-        // console.log("onChnage");
-        // console.log(role.Name);
-    }
 
     public saveUser()
     {
@@ -182,5 +136,3 @@ export class UserEditorComponent
         this.userDeleted.emit(this.user);
     }
 }
-
-

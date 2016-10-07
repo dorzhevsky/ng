@@ -80,9 +80,32 @@ export class TreeNode<T>
     private indeterminate()
     {
         this.Indeterminate = true;
+        this.Checked = false;
         if (this.parent)
         {
             this.parent.indeterminate();
+        }
+    }
+
+    public getSelectedItems(): Array<T>
+    {
+        let selectedItems:Array<T> = [];
+        this.getSelectedItemsInternal(selectedItems);
+        return selectedItems;
+    }
+
+    private getSelectedItemsInternal(selectedItems: Array<T>)
+    {
+        // console.log("getSelectedItemsInternal");
+        // console.log(this.Value);
+        // console.log(this.Checked);
+        if (this.Checked)
+        {
+            selectedItems.push(this.value);
+        }
+        if (this.Children && this.Children.length > 0)
+        {
+            _.each(this.Children, c=>c.getSelectedItemsInternal(selectedItems));
         }
     }
 }

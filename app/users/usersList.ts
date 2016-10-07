@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Output, OnInit } from "@angular/core";
 import { User, Role } from "./user";
+import { UsersService } from "./users.service";
 import { Generator } from "../shared/generator";
 import * as _ from 'lodash';
 
@@ -13,15 +14,14 @@ export class UsersListComponent implements OnInit
     public selectedUser:User;
     @Output() public userSelected: EventEmitter<User> = new EventEmitter<User>();
 
-    constructor()
+    constructor(private usersService:UsersService)
     {
-        this.users = [
-            new User(Generator.Next(), "dorzhevsky", "qwerty", "Dmitry", "Orzhevsky", new Role(1, "Administrator",7)),
-            new User(Generator.Next(), "ashkarin", "qwerty", "Anton", "Shkarin", new Role(1, "HR",2)),
-            new User(Generator.Next(), "esokolova", "qwerty", "Elena", "Sokolova", new Role(1, "Officer",3)),
-            new User(Generator.Next(), "dbashkalin", "qwerty", "Dmitry", "Bashkalin", new Role(1, "Administrator",1)),
-            new User(Generator.Next(), "adegtev", "qwerty", "Alex", "Degtev", new Role(1, "HR",2)),
-        ] 
+    }
+
+    public ngOnInit()
+    {
+        this.users = this.usersService.getUsers(); 
+        this.createUser();
     }
 
     public selectUser(user: User): void {
@@ -31,7 +31,7 @@ export class UsersListComponent implements OnInit
 
     public createUser()
     {
-        let emptyUser: User = User.Empty();
+        let emptyUser: User = this.usersService.getEmptyUser();
         this.selectedUser = emptyUser;
         this.userSelected.emit(emptyUser);        
     }
@@ -51,10 +51,5 @@ export class UsersListComponent implements OnInit
             this.users.splice(index,1);
             this.createUser();
         }
-    }
-
-    public ngOnInit()
-    {
-        this.createUser();
     }
 }

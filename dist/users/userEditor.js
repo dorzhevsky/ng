@@ -12,14 +12,14 @@ var core_1 = require("@angular/core");
 var forms_1 = require('@angular/forms');
 var user_1 = require("./user");
 var generator_1 = require("../shared/generator");
-var permission_1 = require("./permission");
-var treeNode_class_1 = require("./treeNode.class");
+var tree_component_1 = require("./tree.component");
+var users_service_1 = require("./users.service");
 require('jquery');
-var _ = require("lodash");
 //declare var $:JQueryStatic;
 var UserEditorComponent = (function () {
-    function UserEditorComponent(formBuilder) {
+    function UserEditorComponent(formBuilder, usersService) {
         this.formBuilder = formBuilder;
+        this.usersService = usersService;
         this.userSaved = new core_1.EventEmitter();
         this.userDeleted = new core_1.EventEmitter();
         this.login = new forms_1.FormControl("", forms_1.Validators.required);
@@ -38,71 +38,29 @@ var UserEditorComponent = (function () {
             {
                 required: 'Необходимо задать значение'
             };
-        this.roles =
-            [
-                new user_1.Role(1, "Administrator", 1),
-                new user_1.Role(2, "HR", 2),
-                new user_1.Role(3, "Offices", 4)
-            ];
-        this.permissionsTree =
-            [
-                new treeNode_class_1.TreeNode(new permission_1.Permission("Programming", 0), [
-                    new treeNode_class_1.TreeNode(new permission_1.Permission("C#", 1), null),
-                    new treeNode_class_1.TreeNode(new permission_1.Permission("Python", 2), null),
-                    new treeNode_class_1.TreeNode(new permission_1.Permission("JavaScript", 4), null)
-                ])
-            ];
+        this.roles = this.usersService.getRoles();
+    }
+    UserEditorComponent.prototype.ngOnInit = function () {
         var that = this;
         this.role.valueChanges.subscribe(function () {
-            console.log(that.role.value);
-            that.resetPermissionsTree(that.permissionsTree);
-            that.updatePermissionsTree(that.permissionsTree);
+            that.selectedRole = that.role.value;
         });
-    }
+    };
     Object.defineProperty(UserEditorComponent.prototype, "selectedUser", {
         set: function (user) {
             this.user = user;
+            this.selectedRole = this.user.Role;
             this.login.reset();
             this.login.setValue(user.Login);
+            //TODO: Reset all form controls
             this.password.setValue(user.Password);
             this.firstName.setValue(user.FirstName);
             this.lastName.setValue(user.LastName);
             this.role.setValue(user.Role);
-            // this.resetPermissionsTree(this.permissionsTree);
-            // this.updatePermissionsTree(this.permissionsTree);
         },
         enumerable: true,
         configurable: true
     });
-    UserEditorComponent.prototype.updatePermissionsTree = function (permissions) {
-        var _this = this;
-        _.each(permissions, function (e) {
-            var permission = e.Value;
-            // console.log("Permission mask");
-            // console.log(this.role.value.PermissionsMask);
-            if (permission.Value & _this.role.value.PermissionsMask) {
-                e.Check(true);
-            }
-            if (e.Children && e.Children.length > 0) {
-                _this.updatePermissionsTree(e.Children);
-            }
-        });
-    };
-    UserEditorComponent.prototype.resetPermissionsTree = function (permissions) {
-        var _this = this;
-        _.each(permissions, function (e) {
-            e.Checked = false;
-            e.Indeterminate = false;
-            if (e.Children && e.Children.length > 0) {
-                _this.resetPermissionsTree(e.Children);
-            }
-        });
-    };
-    UserEditorComponent.prototype.onChange = function (role) {
-        // this.user.Role = role;
-        // console.log("onChnage");
-        // console.log(role.Name);
-    };
     UserEditorComponent.prototype.saveUser = function () {
         if (this.form.valid) {
             if (this.user) {
@@ -130,6 +88,10 @@ var UserEditorComponent = (function () {
         __metadata('design:type', core_1.EventEmitter)
     ], UserEditorComponent.prototype, "userDeleted", void 0);
     __decorate([
+        core_1.ViewChild(tree_component_1.TreeComponent), 
+        __metadata('design:type', tree_component_1.TreeComponent)
+    ], UserEditorComponent.prototype, "rolesTree", void 0);
+    __decorate([
         core_1.Input(), 
         __metadata('design:type', user_1.User), 
         __metadata('design:paramtypes', [user_1.User])
@@ -139,7 +101,7 @@ var UserEditorComponent = (function () {
             selector: "userEditor",
             templateUrl: "./app/users/userEditor.html"
         }), 
-        __metadata('design:paramtypes', [forms_1.FormBuilder])
+        __metadata('design:paramtypes', [forms_1.FormBuilder, users_service_1.UsersService])
     ], UserEditorComponent);
     return UserEditorComponent;
 }());
