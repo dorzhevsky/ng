@@ -40,6 +40,12 @@ export class UsersService
         return this.roles;
     }
 
+    public createRole(role: Role)
+    {
+        role.Id = Generator.Next();
+        this.roles.push(role);
+    }
+
     public getEmptyUser(): User
     {
         return new User(0,"","", "", "", this.adminRole);

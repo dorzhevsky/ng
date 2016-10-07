@@ -79,6 +79,9 @@ var UserEditorComponent = (function () {
     UserEditorComponent.prototype.deleteUser = function () {
         this.userDeleted.emit(this.user);
     };
+    UserEditorComponent.prototype.createRole = function () {
+        this.selectedRole = new user_1.Role(0, "", 0);
+    };
     __decorate([
         core_1.Output(), 
         __metadata('design:type', core_1.EventEmitter)

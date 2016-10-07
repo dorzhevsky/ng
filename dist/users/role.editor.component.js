@@ -81,7 +81,17 @@ var RoleEditorComponent = (function () {
         });
         this._role.PermissionsMask = mask;
         this._role.Name = this.roleName.value;
+        if (this._role.Id === 0) {
+            this.usersService.createRole(this._role);
+        }
     };
+    Object.defineProperty(RoleEditorComponent.prototype, "caption", {
+        get: function () {
+            return this._role.Id === 0 ? "Создание роли" : "Редактирование роли";
+        },
+        enumerable: true,
+        configurable: true
+    });
     __decorate([
         core_1.Input(), 
         __metadata('design:type', user_1.Role), 

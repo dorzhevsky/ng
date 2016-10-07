@@ -135,4 +135,9 @@ export class UserEditorComponent implements OnInit
     {
         this.userDeleted.emit(this.user);
     }
+
+    private createRole()
+    {
+        this.selectedRole = new Role(0, "", 0);
+    }
 }

@@ -34,6 +34,10 @@ var UsersService = (function () {
     UsersService.prototype.getRoles = function () {
         return this.roles;
     };
+    UsersService.prototype.createRole = function (role) {
+        role.Id = generator_1.Generator.Next();
+        this.roles.push(role);
+    };
     UsersService.prototype.getEmptyUser = function () {
         return new user_1.User(0, "", "", "", "", this.adminRole);
     };

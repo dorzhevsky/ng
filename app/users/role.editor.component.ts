@@ -126,5 +126,15 @@ export class RoleEditorComponent implements OnInit
         })
         this._role.PermissionsMask = mask;
         this._role.Name = this.roleName.value;
+
+        if (this._role.Id === 0)
+        {
+            this.usersService.createRole(this._role);
+        }
+    }
+
+    private get caption(): string
+    {
+        return this._role.Id === 0 ? "Создание роли" : "Редактирование роли";
     }
 }
