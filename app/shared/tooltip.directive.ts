@@ -27,13 +27,12 @@ import {
 import { ConfirmDirective } from "./confirm";
 import { Generator } from "./generator";
 import { MfiTooltipComponent } from "./tooltip.component";
-import 'jquery';
-//import * as _ from 'lodash';
-declare var $:JQueryStatic;
+import { ValidationService } from "./validation.service";
+
 @Directive({
     selector:"[mfitooltip]"
 })
-export class MfiTooltipDirective implements OnInit
+export class MfiTooltipDirective implements OnInit, OnChanges
 {
 
     constructor(private viewContainerRef: ViewContainerRef,
@@ -47,29 +46,23 @@ export class MfiTooltipDirective implements OnInit
     private _enabled: boolean = false;
     private _visible: boolean;
 
-    @Input() public messages: any;
-
     @Input() public formControl: FormControl
-
-    @Input() public set enabled(value:boolean)
-    {
-    }
 
     public ngOnInit()
     {
-        let that = this;
-        this.formControl.statusChanges.subscribe(()=>
-        {
-            that.check();
-        });
         this.check();
     }
 
+    public ngOnChanges()
+    {
+        this.check();
+    }
+
+    @Input() public enabled;
+
     private check()
     {
-        this._enabled = !this.formControl.valid;
-
-        if (!this._enabled)
+        if (!this.enabled)
         {
             this.hideTooltip();
             return;
@@ -80,11 +73,6 @@ export class MfiTooltipDirective implements OnInit
             this.hideTooltip();
             this.showTooltip();
             return;
-        }
-
-        if ($(this.viewContainerRef.element.nativeElement).is(":focus"))
-        {
-            this.showTooltip();
         }        
     }
 
@@ -92,7 +80,7 @@ export class MfiTooltipDirective implements OnInit
     @HostListener('mouseenter', ['$event', '$target'])    
     private showTooltip()
     {
-        if (!this._enabled || this._visible)
+        if (!this.enabled || this._visible)
         {
             return;
         }
@@ -121,20 +109,6 @@ export class MfiTooltipDirective implements OnInit
 
 
     public get text():string {
-
-        if (!this.formControl.errors)
-        {
-            return "";
-        }
-
-        for(var prop in this.messages)
-        {
-            if (this.formControl.errors[prop])
-            {
-                return this.messages[prop];
-            }            
-        }
-
-        return "";
+        return ValidationService.getMessage(this.formControl);
     }
 }

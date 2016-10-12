@@ -11,29 +11,21 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require("@angular/core");
 var forms_1 = require('@angular/forms');
 var tooltip_component_1 = require("./tooltip.component");
-require('jquery');
+var validation_service_1 = require("./validation.service");
 var MfiTooltipDirective = (function () {
     function MfiTooltipDirective(viewContainerRef, componentFactoryResolver) {
         this.viewContainerRef = viewContainerRef;
         this.componentFactoryResolver = componentFactoryResolver;
         this._enabled = false;
     }
-    Object.defineProperty(MfiTooltipDirective.prototype, "enabled", {
-        set: function (value) {
-        },
-        enumerable: true,
-        configurable: true
-    });
     MfiTooltipDirective.prototype.ngOnInit = function () {
-        var that = this;
-        this.formControl.statusChanges.subscribe(function () {
-            that.check();
-        });
+        this.check();
+    };
+    MfiTooltipDirective.prototype.ngOnChanges = function () {
         this.check();
     };
     MfiTooltipDirective.prototype.check = function () {
-        this._enabled = !this.formControl.valid;
-        if (!this._enabled) {
+        if (!this.enabled) {
             this.hideTooltip();
             return;
         }
@@ -42,12 +34,9 @@ var MfiTooltipDirective = (function () {
             this.showTooltip();
             return;
         }
-        if ($(this.viewContainerRef.element.nativeElement).is(":focus")) {
-            this.showTooltip();
-        }
     };
     MfiTooltipDirective.prototype.showTooltip = function () {
-        if (!this._enabled || this._visible) {
+        if (!this.enabled || this._visible) {
             return;
         }
         this._visible = true;
@@ -65,32 +54,19 @@ var MfiTooltipDirective = (function () {
     };
     Object.defineProperty(MfiTooltipDirective.prototype, "text", {
         get: function () {
-            if (!this.formControl.errors) {
-                return "";
-            }
-            for (var prop in this.messages) {
-                if (this.formControl.errors[prop]) {
-                    return this.messages[prop];
-                }
-            }
-            return "";
+            return validation_service_1.ValidationService.getMessage(this.formControl);
         },
         enumerable: true,
         configurable: true
     });
     __decorate([
         core_1.Input(), 
-        __metadata('design:type', Object)
-    ], MfiTooltipDirective.prototype, "messages", void 0);
-    __decorate([
-        core_1.Input(), 
         __metadata('design:type', forms_1.FormControl)
     ], MfiTooltipDirective.prototype, "formControl", void 0);
     __decorate([
         core_1.Input(), 
-        __metadata('design:type', Boolean), 
-        __metadata('design:paramtypes', [Boolean])
-    ], MfiTooltipDirective.prototype, "enabled", null);
+        __metadata('design:type', Object)
+    ], MfiTooltipDirective.prototype, "enabled", void 0);
     __decorate([
         core_1.HostListener('focusin', ['$event', '$target']),
         core_1.HostListener('mouseenter', ['$event', '$target']), 

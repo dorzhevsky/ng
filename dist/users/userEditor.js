@@ -34,10 +34,6 @@ var UserEditorComponent = (function () {
             "lastName": this.lastName,
             "role": this.role
         });
-        this.messages =
-            {
-                required: 'Необходимо задать значение'
-            };
         this.roles = this.usersService.getRoles();
     }
     UserEditorComponent.prototype.ngOnInit = function () {

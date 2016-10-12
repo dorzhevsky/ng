@@ -1,6 +1,6 @@
 import { NgModule }      from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { MfiTooltipDirective } from "./tooltip.directive";
+import { MfiTooltipDirective  } from "./tooltip.directive";
 import { MfiTooltipComponent } from "./tooltip.component";
 import { MfiDdlistComponent } from "../shared/ddlist";
 import { ConfirmDirective } from "../shared/confirm"

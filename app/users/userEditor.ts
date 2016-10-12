@@ -57,8 +57,6 @@ export class UserEditorComponent implements OnInit
     public roles: Array<Role>;
 
     public form: FormGroup;
-
-    private messages: any;
     
     public login = new FormControl("", Validators.required); 
     public password = new FormControl("", Validators.required);
@@ -77,11 +75,6 @@ export class UserEditorComponent implements OnInit
             "lastName": this.lastName,
             "role": this.role
         });
-
-        this.messages = 
-        {
-            required:'Необходимо задать значение'
-        };
 
         this.roles = this.usersService.getRoles();
     }

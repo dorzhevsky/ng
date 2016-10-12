@@ -6,7 +6,7 @@
 
             <div class="col-sm-6">
                 <input type="text" value="" style="display: none">
-                <input [messages]="messages" mfitooltip [enabled]="!login.valid" [class.error]="!login.valid && login.dirty" [formControl]="login"
+                <input mfitooltip [enabled]="!login.valid" [formControl]="login" [class.error]="!login.valid && login.dirty"
                     type="text" class="form-control inline valid" name="Login" id="form-user-login">
             </div>
             <a mfiConfirm *ngIf="user.Id > 0" (confirm)="deleteUser()" id="delete-user-btn" type="button" class="dashed-underline" data-original-title=""
