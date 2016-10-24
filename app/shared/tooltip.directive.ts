@@ -12,7 +12,8 @@ import {
     HostListener,
     ReflectiveInjector,
     OnInit,
-    SimpleChanges
+    SimpleChanges,
+    Injectable
 } from "@angular/core";
 import {
     FormBuilder,
@@ -27,18 +28,28 @@ import {
 import { ConfirmDirective } from "./confirm";
 import { Generator } from "./generator";
 import { MfiTooltipComponent } from "./tooltip.component";
-import { ValidationService } from "./validation.service";
+import { ValidationService,CustomValidationService  } from "./validation.service";
 
 @Directive({
-    selector:"[mfitooltip]"
+    selector:"[mfitooltip]",
+    providers: [
+    {provide: ValidationService, useClass: CustomValidationService }
+  ],
 })
 export class MfiTooltipDirective implements OnInit, OnChanges
 {
 
-    constructor(private viewContainerRef: ViewContainerRef,
+    constructor(private validationService: ValidationService,
+                private viewContainerRef: ViewContainerRef,
                 private componentFactoryResolver: ComponentFactoryResolver)
     {
-
+        console.log("XXX");
+        console.log(this.validationService);
+        for(var p in this.validationService)
+        {
+            console.log(p);
+            console.log(this.validationService[p]);
+        }
     }
 
     private tooltipComponentHost: ComponentRef<MfiTooltipComponent>;
@@ -109,6 +120,6 @@ export class MfiTooltipDirective implements OnInit, OnChanges
 
 
     public get text():string {
-        return ValidationService.getMessage(this.formControl);
+        return this.validationService.getMessage(this.formControl);
     }
 }

@@ -10,10 +10,12 @@ import { UsersService } from "./users.service";
 import { ConfirmDirective } from "../shared/confirm"
 import { FormsModule, ReactiveFormsModule }   from '@angular/forms';
 import { SharedModule }   from '../shared/shared.module';
+import { UsersComponent } from "./users.component";
 
 @NgModule({
   imports:      [ BrowserModule, FormsModule, ReactiveFormsModule, SharedModule ],
-  declarations: [  
+  declarations: [
+                  UsersComponent,          
                   UsersListComponent, 
                   UserHeaderComponent, 
                   UserEditorComponent,
@@ -21,6 +23,7 @@ import { SharedModule }   from '../shared/shared.module';
                   TreeComponent
                   ],
   exports:       [  
+                  UsersComponent,
                   UsersListComponent, 
                   UserHeaderComponent, 
                   UserEditorComponent,

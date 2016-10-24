@@ -10,42 +10,26 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var platform_browser_1 = require('@angular/platform-browser');
-var usersList_1 = require('./usersList');
-var userHeader_1 = require("./userHeader");
-var userEditor_1 = require("./userEditor");
-var role_editor_component_1 = require("./role.editor.component");
-var tree_component_1 = require("./tree.component");
-var users_service_1 = require("./users.service");
 var forms_1 = require('@angular/forms');
 var shared_module_1 = require('../shared/shared.module');
-var users_component_1 = require("./users.component");
-var UsersModule = (function () {
-    function UsersModule() {
+var dashboard_component_1 = require("./dashboard.component");
+var DashboardModule = (function () {
+    function DashboardModule() {
     }
-    UsersModule = __decorate([
+    DashboardModule = __decorate([
         core_1.NgModule({
             imports: [platform_browser_1.BrowserModule, forms_1.FormsModule, forms_1.ReactiveFormsModule, shared_module_1.SharedModule],
             declarations: [
-                users_component_1.UsersComponent,
-                usersList_1.UsersListComponent,
-                userHeader_1.UserHeaderComponent,
-                userEditor_1.UserEditorComponent,
-                role_editor_component_1.RoleEditorComponent,
-                tree_component_1.TreeComponent
+                dashboard_component_1.DashboardComponent
             ],
             exports: [
-                users_component_1.UsersComponent,
-                usersList_1.UsersListComponent,
-                userHeader_1.UserHeaderComponent,
-                userEditor_1.UserEditorComponent,
-                role_editor_component_1.RoleEditorComponent,
-                tree_component_1.TreeComponent
+                dashboard_component_1.DashboardComponent
             ],
-            providers: [users_service_1.UsersService]
+            providers: []
         }), 
         __metadata('design:paramtypes', [])
-    ], UsersModule);
-    return UsersModule;
+    ], DashboardModule);
+    return DashboardModule;
 }());
-exports.UsersModule = UsersModule;
-//# sourceMappingURL=users.module.js.map
+exports.DashboardModule = DashboardModule;
+//# sourceMappingURL=dashboard.module.js.map

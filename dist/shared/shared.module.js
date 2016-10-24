@@ -15,6 +15,7 @@ var tooltip_component_1 = require("./tooltip.component");
 var ddlist_1 = require("../shared/ddlist");
 var confirm_1 = require("../shared/confirm");
 var forms_1 = require('@angular/forms');
+var validation_service_1 = require("./validation.service");
 var SharedModule = (function () {
     function SharedModule() {
     }
@@ -32,7 +33,8 @@ var SharedModule = (function () {
                 tooltip_directive_1.MfiTooltipDirective,
                 ddlist_1.MfiDdlistComponent
             ],
-            entryComponents: [tooltip_component_1.MfiTooltipComponent]
+            entryComponents: [tooltip_component_1.MfiTooltipComponent],
+            providers: [validation_service_1.ValidationService]
         }), 
         __metadata('design:paramtypes', [])
     ], SharedModule);

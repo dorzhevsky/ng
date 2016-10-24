@@ -29,6 +29,7 @@ import { Generator } from "../shared/generator";
 import 'jquery';
 //import * as _ from 'lodash';
 declare var $:JQueryStatic;
+
 @Component({
     template:
     `<div style="opacity:1;left:-10000px;top:-10000px;" class="tooltip tooltip-top" role="tooltip">

@@ -3,7 +3,7 @@ import {
  } from '@angular/forms'
 export class ValidationService
 {
-    public static getMessage(control: FormControl): string
+    public getMessage(control: FormControl): string
     {
         if (!control.errors)
         {
@@ -12,19 +12,29 @@ export class ValidationService
 
         for(var prop in control.errors)
         {            
-            if (ValidationService.Messages[prop])
+            if (this.Messages[prop])
             {
-                return ValidationService.Messages[prop];
+                return this.Messages[prop];
             }            
         }
 
         return "";
     }
 
-    private static get Messages()
+    protected get Messages()
     {
         return  {
             "required": "Необходимо задать значение"
         }
+    }
+}
+
+export class CustomValidationService extends ValidationService
+{
+    protected get Messages()
+    {
+        return  {
+            "required": "Value is required"
+        }   
     }
 }

@@ -9,17 +9,31 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var AppComponent = (function () {
-    function AppComponent() {
+var usersList_1 = require("./usersList");
+var UsersComponent = (function () {
+    function UsersComponent() {
     }
-    AppComponent = __decorate([
+    UsersComponent.prototype.onUserSelected = function (user) {
+        this.selectedUser = user;
+    };
+    UsersComponent.prototype.userSaved = function (user) {
+        this.usersList.save(user);
+    };
+    UsersComponent.prototype.deleteUser = function (user) {
+        this.usersList.deleteUser(user);
+    };
+    __decorate([
+        core_1.ViewChild(usersList_1.UsersListComponent), 
+        __metadata('design:type', usersList_1.UsersListComponent)
+    ], UsersComponent.prototype, "usersList", void 0);
+    UsersComponent = __decorate([
         core_1.Component({
-            selector: 'app',
-            templateUrl: "app.html"
+            selector: 'users',
+            templateUrl: "./app/users/users.html"
         }), 
         __metadata('design:paramtypes', [])
-    ], AppComponent);
-    return AppComponent;
+    ], UsersComponent);
+    return UsersComponent;
 }());
-exports.AppComponent = AppComponent;
-//# sourceMappingURL=app.component.js.map
+exports.UsersComponent = UsersComponent;
+//# sourceMappingURL=users.component.js.map

@@ -13,10 +13,17 @@ var forms_1 = require('@angular/forms');
 var tooltip_component_1 = require("./tooltip.component");
 var validation_service_1 = require("./validation.service");
 var MfiTooltipDirective = (function () {
-    function MfiTooltipDirective(viewContainerRef, componentFactoryResolver) {
+    function MfiTooltipDirective(validationService, viewContainerRef, componentFactoryResolver) {
+        this.validationService = validationService;
         this.viewContainerRef = viewContainerRef;
         this.componentFactoryResolver = componentFactoryResolver;
         this._enabled = false;
+        console.log("XXX");
+        console.log(this.validationService);
+        for (var p in this.validationService) {
+            console.log(p);
+            console.log(this.validationService[p]);
+        }
     }
     MfiTooltipDirective.prototype.ngOnInit = function () {
         this.check();
@@ -54,7 +61,7 @@ var MfiTooltipDirective = (function () {
     };
     Object.defineProperty(MfiTooltipDirective.prototype, "text", {
         get: function () {
-            return validation_service_1.ValidationService.getMessage(this.formControl);
+            return this.validationService.getMessage(this.formControl);
         },
         enumerable: true,
         configurable: true
@@ -83,9 +90,12 @@ var MfiTooltipDirective = (function () {
     ], MfiTooltipDirective.prototype, "hideTooltip", null);
     MfiTooltipDirective = __decorate([
         core_1.Directive({
-            selector: "[mfitooltip]"
+            selector: "[mfitooltip]",
+            providers: [
+                { provide: validation_service_1.ValidationService, useClass: validation_service_1.CustomValidationService }
+            ],
         }), 
-        __metadata('design:paramtypes', [core_1.ViewContainerRef, core_1.ComponentFactoryResolver])
+        __metadata('design:paramtypes', [validation_service_1.ValidationService, core_1.ViewContainerRef, core_1.ComponentFactoryResolver])
     ], MfiTooltipDirective);
     return MfiTooltipDirective;
 }());

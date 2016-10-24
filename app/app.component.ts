@@ -8,27 +8,6 @@ import { User } from "./users/user";
   templateUrl: "app.html"
 })
 export class AppComponent {
-
-  public selectedUser: User;
-  
-  @ViewChild(UsersListComponent)
-  public usersList: UsersListComponent;
-
   constructor() {      
-  }
-
-  public onUserSelected(user: User)
-  {
-     this.selectedUser = user;
-  }
-
-  public userSaved(user: User)
-  {
-     this.usersList.save(user);
-  }
-
-  public deleteUser(user: User)
-  {
-    this.usersList.deleteUser(user);
   }
 }

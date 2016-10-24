@@ -5,6 +5,7 @@ import { MfiTooltipComponent } from "./tooltip.component";
 import { MfiDdlistComponent } from "../shared/ddlist";
 import { ConfirmDirective } from "../shared/confirm"
 import { FormsModule, ReactiveFormsModule }   from '@angular/forms';
+import { ValidationService, CustomValidationService } from "./validation.service";
 
 @NgModule({
   imports:      [ BrowserModule, FormsModule, ReactiveFormsModule ],
@@ -19,6 +20,7 @@ import { FormsModule, ReactiveFormsModule }   from '@angular/forms';
                   MfiTooltipDirective,
                   MfiDdlistComponent 
                   ],                  
-  entryComponents: [MfiTooltipComponent]
+  entryComponents: [MfiTooltipComponent],
+  providers: [ValidationService]
 })
 export class SharedModule { }
