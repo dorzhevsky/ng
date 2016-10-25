@@ -11,6 +11,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var platform_browser_1 = require('@angular/platform-browser');
 var app_component_1 = require('./app.component');
+var navigator_component_1 = require("./navigator.component");
 var forms_1 = require('@angular/forms');
 var router_1 = require("@angular/router");
 var users_module_1 = require("./users/users.module");
@@ -30,10 +31,10 @@ var AppModule = (function () {
                 router_1.RouterModule.forRoot([
                     { path: "dashboard", component: dashboard_component_1.DashboardComponent },
                     { path: "users", component: users_component_1.UsersComponent },
-                    { path: "", component: users_component_1.UsersComponent }
-                ])
+                    { path: "", redirectTo: "dashboard", pathMatch: 'full' }
+                ], { useHash: true })
             ],
-            declarations: [app_component_1.AppComponent],
+            declarations: [app_component_1.AppComponent, navigator_component_1.NavigatorComponent],
             bootstrap: [app_component_1.AppComponent]
         }), 
         __metadata('design:paramtypes', [])

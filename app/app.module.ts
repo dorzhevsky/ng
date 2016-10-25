@@ -1,6 +1,7 @@
 import { NgModule }      from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent }   from './app.component';
+import { NavigatorComponent } from "./navigator.component";
 import { FormsModule, ReactiveFormsModule }   from '@angular/forms';
 import { RouterModule } from "@angular/router";
 import { SharedModule } from "./shared/shared.module";
@@ -19,11 +20,11 @@ import { DashboardComponent } from "./dashboard/dashboard.component";
                     [
                        { path: "dashboard", component: DashboardComponent },
                        { path: "users", component: UsersComponent },
-                       { path: "", component: UsersComponent }
-                    ])
+                       { path: "", redirectTo: "dashboard", pathMatch: 'full' }
+                    ], { useHash: true })
                   ],
 
-  declarations: [ AppComponent],
+  declarations: [ AppComponent, NavigatorComponent],
   bootstrap:    [ AppComponent ]
 })
 export class AppModule { }
