@@ -14,11 +14,14 @@ var ConfirmDirective = (function () {
         this.confirm = new core_1.EventEmitter();
     }
     ConfirmDirective.prototype.Click = function () {
-        //TODO
-        if (confirm("Удалить пользователя?")) {
+        if (confirm(this.message)) {
             this.confirm.emit(true);
         }
     };
+    __decorate([
+        core_1.Input(), 
+        __metadata('design:type', String)
+    ], ConfirmDirective.prototype, "message", void 0);
     __decorate([
         core_1.Output(), 
         __metadata('design:type', core_1.EventEmitter)

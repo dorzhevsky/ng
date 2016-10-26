@@ -9,8 +9,8 @@
                 <input mfitooltip [enabled]="!login.valid" [formControl]="login" [class.error]="!login.valid && login.dirty"
                     type="text" class="form-control inline valid" name="Login" id="form-user-login">
             </div>
-            <a mfiConfirm *ngIf="user.Id > 0" (confirm)="deleteUser()" id="delete-user-btn" type="button" class="dashed-underline" data-original-title=""
-                title="" style="display: inline;">Удалить пользователя</a>
+            <a mfiConfirm *ngIf="user.Id > 0" [message]="'Вы уверены?'" (confirm)="deleteUser()" type="button" class="dashed-underline"
+                style="display: inline;">Удалить пользователя</a>
         </div>
 
 

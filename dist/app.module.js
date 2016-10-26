@@ -12,7 +12,6 @@ var core_1 = require('@angular/core');
 var platform_browser_1 = require('@angular/platform-browser');
 var app_component_1 = require('./app.component');
 var navigator_component_1 = require("./navigator.component");
-var forms_1 = require('@angular/forms');
 var router_1 = require("@angular/router");
 var users_module_1 = require("./users/users.module");
 var dashboard_module_1 = require("./dashboard/dashboard.module");
@@ -24,8 +23,6 @@ var AppModule = (function () {
     AppModule = __decorate([
         core_1.NgModule({
             imports: [platform_browser_1.BrowserModule,
-                forms_1.FormsModule,
-                forms_1.ReactiveFormsModule,
                 users_module_1.UsersModule,
                 dashboard_module_1.DashboardModule,
                 router_1.RouterModule.forRoot([
