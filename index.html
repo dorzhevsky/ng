@@ -1,0 +1,150 @@
+﻿<html class="">
+
+<head>
+  <base href="/">
+  <title>Пользователи</title>
+  <meta http-equiv="content-type" content="text/html;charset=UTF-8">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta content="" name="description">
+  <meta content="" name="author">
+
+
+  <link href="/Content/webarch/plugins/boostrapv3/css/bootstrap.min.css" rel="stylesheet">
+
+  <style>
+    .tooltip.tooltip-top .tooltip-arrow {
+    bottom: -5px;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px 5px 0;
+    border-top-color: #000;
+    }
+    ul
+    {
+      list-style:none;
+    }
+    div.checkbox
+    {
+      padding-top:0 !important;
+    }
+    div.checkbox label
+    {
+      padding-left: 5px;
+    }
+  </style>
+
+  <link href="/Content/webarch/plugins/font-awesome/css/font-awesome.css" rel="stylesheet" type="text/css">
+
+  <link href="/Content/webarch/css/style.css" rel="stylesheet">
+  <link href="/Content/webarch/css/responsive.css" rel="stylesheet">
+  <link href="/Content/webarch/css/custom-icon-set.css" rel="stylesheet" type="text/css">
+
+  <link href="/Content/fonts/OpenSans/OpenSans.css" rel="stylesheet" type="text/css">
+
+  <link href="/Content/mfi.main.css" rel="stylesheet">
+  <link href="/Content/mfi.expandableTree.css" rel="stylesheet">
+  <link href="/Content/mfi.page.css" rel="stylesheet">
+  <link href="/Content/mfi.roles.css" rel="stylesheet">
+
+
+  <script src="node_modules/core-js/client/shim.min.js"></script>
+  <script src="node_modules/zone.js/dist/zone.js"></script>
+  <script src="node_modules/reflect-metadata/Reflect.js"></script>
+  <script src="node_modules/systemjs/dist/system.src.js"></script>
+  <!-- 2. Configure SystemJS -->
+  <script src="resources/systemjs.config.js"></script>
+  <script>
+    System.import('app').catch(function(err){ console.error(err); });
+  </script>
+
+</head>
+
+<body class="navbar-fixed breakpoint-1024">
+
+
+
+  <div class="header navbar navbar-inverse" id="navbar">
+
+    <!-- BEGIN TOP NAVIGATION BAR -->
+    <div class="navbar-inner" style="background-color: #0090d9 !important;">
+      <!-- BEGIN NAVIGATION HEADER -->
+      <!-- END NAVIGATION HEADER -->
+      <!-- BEGIN CONTENT HEADER -->
+      <div class="header-quick-nav">
+        <!-- BEGIN HEADER LEFT SIDE SECTION -->
+        <div class="pull-left">
+          <!-- BEGIN SLIM NAVIGATION TOGGLE -->
+          <ul class="nav quick-section">
+            <li class="quicklinks">
+              <a href="javascript: void(0);" class="" id="layout-condensed-toggle">
+                <div class="iconset top-menu-toggle-white"></div>
+              </a>
+            </li>
+          </ul>
+          <!-- END SLIM NAVIGATION TOGGLE -->
+
+          <button type="button" class="nav-button"></button>
+
+        </div>
+        <!-- END HEADER LEFT SIDE SECTION -->
+        <div class="nav-section-title">
+          <h3 class="nav-title">Пользователи</h3>
+        </div>
+        <!-- BEGIN HEADER RIGHT SIDE SECTION -->
+
+        <!-- END HEADER RIGHT SIDE SECTION -->
+      </div>
+      <!-- END CONTENT HEADER -->
+    </div>
+    <!-- END TOP NAVIGATION BAR -->
+
+
+  </div>
+
+  <div class="page-container row-fluid">
+    <div class="page-sidebar" id="main-menu">
+      <div class="slimScrollDiv" style="position: relative; overflow: hidden; width: auto; height: 837px;">
+        <div class="page-sidebar-wrapper" id="main-menu-wrapper" style="overflow: hidden; width: auto; height: 837px;">
+
+          <ul class="nav nav-list">
+
+            <li class="">
+              <a href="/dashboard">
+                <i class="icon-custom-home"></i>
+                <span class="title">Главное</span>
+              </a>
+            </li>
+
+            <li class="">
+              <a href="/users">
+                <i class="fa fa-shield"></i>
+                <span class="title">Пользователи</span>
+              </a>
+            </li>
+
+          </ul>
+
+        </div>
+        <div class="slimScrollBar" style="width: 4px; position: absolute; top: 0px; opacity: 0.4; display: none; border-radius: 7px; z-index: 99; right: 1px; height: 837px; background: rgb(161, 178, 189);"></div>
+        <div class="slimScrollRail" style="width: 4px; height: 100%; position: absolute; top: 0px; display: none; border-radius: 7px; opacity: 0.2; z-index: 90; right: 1px; background: rgb(51, 51, 51);"></div>
+      </div>
+    </div>
+
+    <a href="#" class="scrollup" style="display: none;">Scroll</a>
+
+    <div class="page-content" data-height="1835" style="position: relative;">
+      <div class="content" id="content">
+
+        <app></app>
+
+      </div>
+    </div>
+  </div>
+
+  <div id="footerLayout">
+  </div>
+
+</body>
+
+</html>

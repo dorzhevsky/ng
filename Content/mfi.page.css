@@ -1,0 +1,132 @@
+﻿#table-all-users tbody tr {
+    cursor: pointer;
+}
+
+table#table-all-users tr td:first-child {
+    border-left-width: 2px;
+    border-left-color: transparent;
+    border-left-style: solid;
+}
+
+table#table-all-users tbody tr.row_selected td:first-child, table#table-all-users tbody tr:hover td:first-child {
+    border-left-color: #0090d9;
+}
+
+table#table-all-users tbody tr.row_selected td{
+    background-color: #f2f4f6 !important;
+}
+
+table#table-all-users tbody tr:hover.row_selected td{
+    background-color: #f2f4f6 !important;
+}
+
+table#table-all-users tbody tr:hover td {
+    background-color: #f2f4f6 !important;
+}
+
+#delete-user-btn {
+    display: inline-block;
+    margin-top: 6px;
+    display: none;
+}
+
+#users-edit-role-button {
+    color: #0090d9;
+}
+
+#users-delete-role-button {
+    color:red;
+}
+
+#users-role-edit-del-actions {
+    display:inline-block; 
+    vertical-align: middle;
+    margin-right: 5px;
+    margin-bottom: 3px;
+}
+
+
+#form-user input.error ~ span.input-group-addon {
+    color: #f35958;
+}
+
+#users .dataTables_empty {
+  display:none;
+}
+
+#users #users-list-wrapper div.grid-body {
+    padding-left: 0;
+    padding-right: 0;
+    padding-bottom: 5px;
+}
+
+#users  .dataTable {  
+  clear: both;
+  margin-top: 0;
+}
+
+#users  table#users-grid {
+    table-layout: fixed;
+}
+
+#users  table#users-grid tr td:first-child {
+    border-left-width: 2px;
+    border-left-color: transparent;
+    border-left-style: solid;
+}
+
+#users  table#users-grid tbody tr.row_selected td:first-child, table#exclude-grid tbody tr:hover td:first-child {
+    border-left-color: #0090d9;
+}
+
+
+#users   table#users-grid tbody tr.row_selected td{
+    background-color: #f2f4f6 !important;
+}
+
+#users  table#users-grid tbody tr:hover.row_selected td{
+    background-color: #f2f4f6 !important;
+}
+
+#users  table#users-grid tbody tr:hover td {
+    background-color: #f2f4f6 !important;
+}
+
+#users  table#users-grid .exclude {
+    word-wrap: break-word;
+}
+
+
+#users .form-horizontal {
+    display: block;
+    top: 0;
+}
+
+.params-area-wrapper {
+    padding: 20px;
+}
+
+@media (min-width: 768px) {
+    .form-horizontal .control-label {
+        text-align: left;
+    }
+}
+
+#users #users-selected-header {
+  display: inline-block;
+  font-size: 24px;
+  color: #576475;
+  word-wrap: break-word;
+}
+
+#users .form-horizontal .form-group {
+    margin-bottom: 10px;
+}
+
+#form-user-role {
+    width: 200px;
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 5px;
+    margin-bottom: 5px;
+}

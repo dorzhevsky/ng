@@ -1,0 +1,47 @@
+﻿/*.tree {
+    margin-bottom:20px;
+}*/
+.tree li {
+    list-style-type:none;
+    margin:0;
+}
+.tree li::before, .tree li::after {
+    content:'';
+    left:-20px;
+    position:absolute;
+    right:auto
+}
+/*.tree li::before {
+    bottom:50px;
+    height:100%;
+    top:0;
+    width:1px
+}
+.tree li::after {
+    height:20px;
+    top:25px;
+    width:25px
+}*/
+
+.tree li.parent > span {
+    cursor:pointer
+}
+.tree > ul > li::before, .tree > ul > li::after {
+    border:0
+}
+.tree li:last-child::before {
+    height:30px
+}
+
+.tree li.expanded > ul {
+    display: block;
+}
+
+.tree li > ul {
+    display: none;
+}
+
+.tree li.parent i.fa-caret-down {
+    width:8px; 
+    margin-left:0;
+}

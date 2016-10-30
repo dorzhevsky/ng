@@ -1,0 +1,33 @@
+﻿#users-roles-area {
+    background-color: #efefef;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-top: 15px;
+    padding-bottom: 10px;
+    display: none;
+    margin-top: 10px;
+}
+
+#users-role-warning {
+    display: none;
+}
+
+#users-roles-tree > ul {
+    padding-left: 0;
+}
+
+#users-roles-tree > ul > li {
+    padding-left: 0;
+}
+
+#users-roles-tree span.roles-tree-role-name {
+    padding-left: 2px;
+}
+
+#users-roles-tree .fa-caret-right {
+    padding-left: 3px;
+}
+
+#users-roles-tree div.checkbox > label {
+    padding-left: 0;
+}
