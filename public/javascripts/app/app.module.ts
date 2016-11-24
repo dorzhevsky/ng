@@ -14,13 +14,13 @@ import { DashboardComponent } from "./dashboard/dashboard.component";
                   FormsModule, 
                   ReactiveFormsModule, 
                   UsersModule,
-                  DashboardModule
-                  // RouterModule.forRoot(
-                  //   [
-                  //      { path: "/dashboard", component: DashboardComponent },
-                  //      { path: "/users", component: UsersComponent },
-                  //      { path: "/", component: UsersComponent }
-                  //   ])
+                  DashboardModule,
+                  RouterModule.forRoot(
+                    [
+                       { path: "dashboard", component: DashboardComponent },
+                       { path: "users", component: UsersComponent },
+                       { path: "", redirectTo: "dashboard", pathMatch: 'full' }
+                    ], { useHash: true })
                   ],
 
   declarations: [ AppComponent],

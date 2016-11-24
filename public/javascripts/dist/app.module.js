@@ -12,8 +12,11 @@ var core_1 = require('@angular/core');
 var platform_browser_1 = require('@angular/platform-browser');
 var app_component_1 = require('./app.component');
 var forms_1 = require('@angular/forms');
+var router_1 = require("@angular/router");
 var users_module_1 = require("./users/users.module");
 var dashboard_module_1 = require("./dashboard/dashboard.module");
+var users_component_1 = require("./users/users.component");
+var dashboard_component_1 = require("./dashboard/dashboard.component");
 var AppModule = (function () {
     function AppModule() {
     }
@@ -23,7 +26,12 @@ var AppModule = (function () {
                 forms_1.FormsModule,
                 forms_1.ReactiveFormsModule,
                 users_module_1.UsersModule,
-                dashboard_module_1.DashboardModule
+                dashboard_module_1.DashboardModule,
+                router_1.RouterModule.forRoot([
+                    { path: "dashboard", component: dashboard_component_1.DashboardComponent },
+                    { path: "users", component: users_component_1.UsersComponent },
+                    { path: "", redirectTo: "dashboard", pathMatch: 'full' }
+                ], { useHash: true })
             ],
             declarations: [app_component_1.AppComponent],
             bootstrap: [app_component_1.AppComponent]
