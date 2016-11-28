@@ -1,0 +1,37 @@
+<template #customTemplate let-permission="Value">
+    <span>{{permission.Name}}</span>
+</template>
+
+<div id="users-roles-area" style="display: block; overflow: visible;">
+
+    <div id="users-roles-edit-caption" style="margin-bottom: 30px;">
+        <h4><span class="semi-bold">{{caption}}</span></h4>
+    </div>
+
+    <div class="row" style="margin-bottom: 20px;">
+        <div class="col-sm-2">
+            <span style="line-height: 37px;">Название:</span>
+        </div>
+        <div class="col-sm-10">
+            <input [formControl]="roleName" type="text" />
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-2">
+            <span style="">Доступ:</span>
+        </div>
+        <div class="col-sm-10">
+            <tree #rolesTree [tree]="permissionsTree" [itemTemplate]="customTemplate"></tree>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-12">
+            <div style="float: left;">
+                <button (click)="saveRole()" type="button" class="btn btn-default btn-cons">Сохранить роль</button>
+            </div>
+        </div>
+    </div>
+
+</div>

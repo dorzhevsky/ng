@@ -1,0 +1,28 @@
+<div id="users-list">
+
+    <div id="users-grid_wrapper" class="dataTables_wrapper form-inline" role="grid">
+        <table class="table table-hover dataTable" id="users-grid">
+            <thead style="display: none;">
+                <tr role="row">
+                    <th class="sorting_disabled" tabindex="0" rowspan="1" colspan="1" aria-label="" style="width: 100%;"></th>
+                </tr>
+            </thead>
+            <tbody role="alert" aria-live="polite" aria-relevant="all">
+                <tr (click)="selectUser(user)" [class]="selectedUser==user ? 'active' : ''" *ngFor="let user of users;">
+                    <td class="">
+                        <div class="display-mode" style="font-size: 13px;">{{user.Name}}</div>
+                        <div class="users" style="font-size: 12px; color: #95989B;">{{user.Role.Name}}</div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="btn-add-item">
+        <a (click)="createUser()" href="javascript:void(0)" id="users-create-new-users">
+            <span class="icon-plus"></span>
+            <span>Добавить пользователя</span>
+        </a>
+    </div>
+
+</div>

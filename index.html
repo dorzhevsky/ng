@@ -1,0 +1,126 @@
+﻿<html class="">
+
+<head>
+  <base href="/">
+  <title>Пользователи</title>
+  <meta http-equiv="content-type" content="text/html;charset=UTF-8">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta content="" name="description">
+  <meta content="" name="author">
+
+
+  <link href="/Content/webarch/plugins/boostrapv3/css/bootstrap.min.css" rel="stylesheet">
+
+  <style>
+    .tooltip.tooltip-top .tooltip-arrow {
+    bottom: -5px;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px 5px 0;
+    border-top-color: #000;
+    }
+    ul
+    {
+      list-style:none;
+    }
+    div.checkbox
+    {
+      padding-top:0 !important;
+    }
+    div.checkbox label
+    {
+      padding-left: 5px;
+    }
+
+    .bar {
+      fill: steelblue;
+    }
+
+    .bar:hover {
+      fill: brown;
+    }
+
+    .axis--x path {
+      display: none;
+    }
+
+  </style>
+
+  <link href="/Content/webarch/plugins/font-awesome/css/font-awesome.css" rel="stylesheet" type="text/css">
+
+  <link href="/Content/webarch/css/style.css" rel="stylesheet">
+  <link href="/Content/webarch/css/responsive.css" rel="stylesheet">
+  <link href="/Content/webarch/css/custom-icon-set.css" rel="stylesheet" type="text/css">
+
+  <link href="/Content/fonts/OpenSans/OpenSans.css" rel="stylesheet" type="text/css">
+
+  <link href="/Content/mfi.main.css" rel="stylesheet">
+  <link href="/Content/mfi.expandableTree.css" rel="stylesheet">
+  <link href="/Content/mfi.page.css" rel="stylesheet">
+  <link href="/Content/mfi.roles.css" rel="stylesheet">
+
+
+  <script src="https://d3js.org/d3.v4.min.js"></script>
+  <script src="node_modules/core-js/client/shim.min.js"></script>
+  <script src="node_modules/zone.js/dist/zone.js"></script>
+  <script src="node_modules/reflect-metadata/Reflect.js"></script>
+  <script src="node_modules/systemjs/dist/system.src.js"></script>
+  <!-- 2. Configure SystemJS -->
+  <script src="resources/systemjs.config.js"></script>
+  <script>
+    System.import('app').catch(function(err){ console.error(err); });
+  </script>
+
+</head>
+
+<body class="navbar-fixed breakpoint-1024">
+
+
+
+  <div class="header navbar navbar-inverse" id="navbar">
+
+    <!-- BEGIN TOP NAVIGATION BAR -->
+    <div class="navbar-inner" style="background-color: #0090d9 !important;">
+      <!-- BEGIN NAVIGATION HEADER -->
+      <!-- END NAVIGATION HEADER -->
+      <!-- BEGIN CONTENT HEADER -->
+      <div class="header-quick-nav">
+        <!-- BEGIN HEADER LEFT SIDE SECTION -->
+        <div class="pull-left">
+          <!-- BEGIN SLIM NAVIGATION TOGGLE -->
+          <ul class="nav quick-section">
+            <li class="quicklinks">
+              <a href="javascript: void(0);" class="" id="layout-condensed-toggle">
+                <div class="iconset top-menu-toggle-white"></div>
+              </a>
+            </li>
+          </ul>
+          <!-- END SLIM NAVIGATION TOGGLE -->
+
+          <button type="button" class="nav-button"></button>
+
+        </div>
+        <!-- END HEADER LEFT SIDE SECTION -->
+        <div class="nav-section-title">
+          <h3 class="nav-title">Пользователи</h3>
+        </div>
+        <!-- BEGIN HEADER RIGHT SIDE SECTION -->
+
+        <!-- END HEADER RIGHT SIDE SECTION -->
+      </div>
+      <!-- END CONTENT HEADER -->
+    </div>
+    <!-- END TOP NAVIGATION BAR -->
+
+
+  </div>
+
+  <app></app>
+
+  <div id="footerLayout">
+  </div>
+
+</body>
+
+</html>

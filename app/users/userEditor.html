@@ -1,0 +1,61 @@
+<div class="params-area-wrapper" style="padding-bottom: 0;">
+    <form #form1 [formGroup]="form" class="form-horizontal" id="form-user" novalidate="novalidate">
+
+        <div class="form-group" style="line-height: 37px;">
+            <label class="col-sm-2 control-label">Логин:</label>
+
+            <div class="col-sm-6">
+                <input type="text" value="" style="display: none">
+                <input mfitooltip [enabled]="!login.valid" [formControl]="login" [class.error]="!login.valid && login.dirty"
+                    type="text" class="form-control inline valid" name="Login" id="form-user-login">
+            </div>
+            <a mfiConfirm *ngIf="user.Id > 0" [message]="'Вы уверены?'" (confirm)="deleteUser()" type="button" class="dashed-underline"
+                style="display: inline;">Удалить пользователя</a>
+        </div>
+
+
+        <div class="form-group">
+            <label class="col-sm-2 control-label">Пароль:</label>
+
+            <div class="col-sm-6">
+                <input type="password" value="" style="display: none">
+                <input [formControl]="password" type="password" class="form-control valid"
+                    name="Pass" id="form-user-pass" data-is-pass-changed="false">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">Имя:</label>
+
+            <div class="col-sm-6">
+                <input [formControl]="firstName" type="text" class="form-control success-control valid"
+                    name="FirstName" id="form-user-first-name">
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <label class="col-sm-2 control-label">Фамилия:</label>
+
+            <div class="col-sm-6">
+                <input [formControl]="lastName" type="text" class="form-control error-control valid"
+                    name="LastName" id="form-user-last-name">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-sm-2 control-label">Роль:</label>
+
+            <div class="col-sm-6">
+                <mfiddlist [defaultText]="'Select a role'" [items]="roles" [formControl]="role">
+                </mfiddlist>
+                <a href="javascript:void(0)" (click)="createRole()">Добавить роль</a>
+            </div>
+        </div>
+
+        <roleEditor [role]="selectedRole"></roleEditor>
+
+    </form>
+</div>
+<div class="params-area-wrapper">
+    <button [disabled]="!form.valid" (click)="saveUser()" class="btn btn-success btn-cons" id="users-save-btn">Сохранить пользователя</button>
+</div>
